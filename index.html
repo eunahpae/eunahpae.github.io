@@ -25,7 +25,7 @@
             background-color: #4d7e8a;
             color: white;
             padding: 20px;
-            /* position: fixed; */
+            position: fixed;
             width: 100%;
             top: 0;
         }
@@ -113,8 +113,7 @@
             transition: transform 0.3s ease;
         }
 
-        .project:hover,
-        .project-box:hover {
+        .project:hover,.project-box:hover {
             transform: translateY(-5px);
         }
 
@@ -175,18 +174,16 @@
 </head>
 
 <body>
-    <header class="sticky-top">
+    <header>
         <div class="container">
             <h1>EunAh PAE</h1>
             <nav>
-                <nav>
-                    <ul>
-                        <li><a href="javascript:void(0)" onclick="navigateToSection('about')">About</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateToSection('skill')">Skills</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateToSection('projects')">Projects</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateToSection('contact')">Contact</a></li>
-                    </ul>
-                </nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skill">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -284,27 +281,25 @@
     </footer>
 
     <script>
-        // Function to scroll to the target section considering the fixed header
-        function scrollToSection(targetId) {
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetOffset = targetElement.offsetTop - headerHeight;
+        // Show or hide the "scroll to top" button based on the scroll position
+        window.onscroll = function () {
+            scrollFunction();
+        };
 
-                window.scrollTo({
-                    top: targetOffset + 1, // Offset by 1 pixel to position below the fixed header
-                    behavior: 'smooth'
-                });
+        function scrollFunction() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
             }
         }
-
-        // Function to handle navigation link clicks
-        function navigateToSection(targetId) {
-            scrollToSection(targetId);
+        // Scroll to the top of the page when the button is clicked
+        function scrollToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
         }
     </script>
-
-
 
 </body>
 
