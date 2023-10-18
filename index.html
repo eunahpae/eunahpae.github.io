@@ -292,7 +292,7 @@
                 const targetOffset = targetElement.offsetTop - headerHeight;
 
                 window.scrollTo({
-                    top: targetOffset,
+                    top: targetOffset + 1, // Offset by 1 pixel to position below the fixed header
                     behavior: 'smooth'
                 });
             }
@@ -303,6 +303,7 @@
             scrollToSection(targetId);
         }
     </script>
+
 
 
 </body>
